@@ -21,7 +21,8 @@ PHP-FPM 8.1.5
 **Utilisateurs**
 
 En plus des développeurs, il faut ajouter l'utilisateur "integration_continue" avec la clef SSH :
-> `ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCnYVCWi4Fr+xnT664/MRGxH8q7IggNwsmUHmCqYhcMVoTW7vZ18CdZ6Zo5YLpV8HAsSNHpkGMQexhe5JTo9ZYXFaG5cOlsiIUDTwHO6oaiGRVnOl5uhj2cqJtgfuoqmw+a8xtEv79gA3K8NZ3xxTAW8S/yN6C4uMQkq3aBx7MDvmva72FsogJ5e9dtXJy9CMgpcDB6YUtNQjm0dzBqky42p43VnbpvDR0EqUvbvFPo62TnepLv5C9CvUSDOlo4Wu2kSCZF0xzFtyo5PN0GO+Z/FVYQxxhkJfx+H+aCYcia04r0wr4cEvdxtjAu0LlBRus7MY/l0xWplz+b1PkDiib3 your_email@example.com`
+
+	ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCnYVCWi4Fr+xnT664/MRGxH8q7IggNwsmUHmCqYhcMVoTW7vZ18CdZ6Zo5YLpV8HAsSNHpkGMQexhe5JTo9ZYXFaG5cOlsiIUDTwHO6oaiGRVnOl5uhj2cqJtgfuoqmw+a8xtEv79gA3K8NZ3xxTAW8S/yN6C4uMQkq3aBx7MDvmva72FsogJ5e9dtXJy9CMgpcDB6YUtNQjm0dzBqky42p43VnbpvDR0EqUvbvFPo62TnepLv5C9CvUSDOlo4Wu2kSCZF0xzFtyo5PN0GO+Z/FVYQxxhkJfx+H+aCYcia04r0wr4cEvdxtjAu0LlBRus7MY/l0xWplz+b1PkDiib3 your_email@example.com`
 
 Cet utilisateur doit avoir les mêmes droits que les développeurs.
 De plus il faut autoriser l'IP suivante dans le firewall du serveur : 51.255.99.74 (VM sur proxmox).
@@ -85,7 +86,6 @@ Pour les environnements de recette, preprod et prod, il faut créer un certifica
 > [include]
 > ;files = /etc/supervisor/conf.d/*.conf
 > files = /var/projects/ayor/*/shared/supervisor-listener.conf
-> 
 
  
 **SUDO**
@@ -94,23 +94,23 @@ Il faut avoir les droits suffisants pour pouvoir lancer les commandes suivantes 
 > sudo /etc/init.d/supervisor stop
 > sudo /usr/bin/pkill supervisord
 > sudo /etc/init.d/supervisor start
-> 
+
 ACL :
 
 Droits 777 par défaut sur :
-/var/projects/ayor/recette/shared/storage/
-/var/projects/ayor/preprod/shared/storage/
-/var/projects/ayor/prod/shared/storage/
+- /var/projects/ayor/recette/shared/storage/
+- /var/projects/ayor/preprod/shared/storage/
+- /var/projects/ayor/prod/shared/storage/
 
 Droits 775 par défaut sur :
-/var/projects/ayor/recette/shared/storage/app/
-/var/projects/ayor/preprod/shared/storage/app/
-/var/projects/ayor/prod/shared/storage/app/
+- /var/projects/ayor/recette/shared/storage/app/
+- /var/projects/ayor/preprod/shared/storage/app/
+- /var/projects/ayor/prod/shared/storage/app/
 
 Propriétaires/groupes chown -R www-data:dev sur :
-/var/projects/ayor/recette/shared/storage/app/
-/var/projects/ayor/preprod/shared/storage/app/
-/var/projects/ayor/prod/shared/storage/app/
+- /var/projects/ayor/recette/shared/storage/app/
+- /var/projects/ayor/preprod/shared/storage/app/
+- /var/projects/ayor/prod/shared/storage/app/
 
 Les utilisateurs www-data, integration_continue et ayor doivent être dans le groupe dev. Ainsi, ils pourront créer/editer des dossiers et fichiers dans le dossier storage/app/
 
