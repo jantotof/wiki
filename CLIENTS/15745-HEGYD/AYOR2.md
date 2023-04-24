@@ -34,19 +34,25 @@ De plus il faut autoriser l'IP suivante dans le firewall du serveur : 51.255.99.
 - recette
 
     DocumentRoot : /var/projects/ayor/recette/current/public
+    
     URL : recette.ayor.hegyd.net
+    
     Base de données : ayor_recette
 
 - preprod
 
     DocumentRoot : /var/projects/ayor/preprod/current/public
+    
     URL : preprod.ayor.hegyd.net
+    
     Base de données : ayor_preprod
 
 - prod
 
     DocumentRoot : /var/projects/ayor/prod/current/public
+    
     URL : prod.ayor.hegyd.net (en attendant le domaine définitif)
+    
     Base de données : ayor_prod
 
 
